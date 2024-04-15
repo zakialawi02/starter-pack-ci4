@@ -12,6 +12,8 @@
 
 # Ignore .env
 /.env
+.env
+*.env
 
 # Ignore editor backup files
 *~
