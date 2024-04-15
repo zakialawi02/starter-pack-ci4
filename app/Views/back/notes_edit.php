@@ -39,21 +39,19 @@
                             <div class="card">
                                 <div class="card-body">
 
-
-
-                                    <form action="/admin/notes/store" method="post">
+                                    <form action="/admin/notes/update/<?= $note['id'] ?>" method="post">
                                         <?= csrf_field() ?>
 
                                         <div class="mb-3">
                                             <label for="title" class="form-label">Title</label>
-                                            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<?= old('title') ?>">
+                                            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<?= old('title', $note['title']) ?>">
                                             <?php if (session()->has('errors')) : ?>
                                                 <p class="text-danger"><?= session('errors.title') ?></p>
                                             <?php endif ?>
                                         </div>
                                         <div class="mb-3">
                                             <label for="content" class="form-label">Content</label>
-                                            <textarea class="form-control" id="content" name="content" rows="3"><?= old('content') ?></textarea>
+                                            <textarea class="form-control" id="content" name="content" rows="3"><?= old('content', $note['content']); ?></textarea>
                                             <?php if (session()->has('errors')) : ?>
                                                 <div class="text-danger"><?= session('errors.content') ?></div>
                                             <?php endif ?>

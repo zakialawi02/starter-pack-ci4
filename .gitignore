@@ -1,18 +1,17 @@
-*/config/development
-*/logs/log-*.php
-!*/logs/index.html
-*/cache/*
-!system/cache/*
-!*/cache/index.html
-!*/cache/.htaccess
+# Ignore writeable
+/writable/cache/*
+/writable/uploads/*
+/writable/debugbar/*
+/writable/session/*
+/writable/logs/*.log
 
-user_guide_src/build/*
-user_guide_src/cilexer/build/*
-user_guide_src/cilexer/dist/*
-user_guide_src/cilexer/pycilexer.egg-info/*
+# Ignore composer
+/composer.json
+/composer.lock
+/vendor
 
-#codeigniter 3
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
-/vendor/
+# Ignore .env
+/.env
+
+# Ignore editor backup files
+*~
