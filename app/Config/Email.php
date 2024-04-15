@@ -6,9 +6,20 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = '';
-    public string $fromName   = '';
-    public string $recipients = '';
+    public function __construct()
+    {
+        $this->fromEmail = $_ENV['FROM_MAIL'];
+        $this->protocol = $_ENV['PROTOCOL_MAIL'];
+        $this->SMTPHost = $_ENV['SMTP_HOST'];
+        $this->SMTPUser = $_ENV['SMTP_USER'];
+        $this->SMTPPass = $_ENV['SMTP_PASS'];
+        $this->SMTPPort = $_ENV['SMTP_PORT'];
+        $this->SMTPCrypto = $_ENV['SMTP_CRYPTO'];
+    }
+
+    public string $fromEmail;
+    public string $fromName   = 'CI4';
+    public string $recipients;
 
     /**
      * The "user agent"
@@ -18,7 +29,7 @@ class Email extends BaseConfig
     /**
      * The mail sending protocol: mail, sendmail, smtp
      */
-    public string $protocol = 'mail';
+    public string $protocol;
 
     /**
      * The server path to Sendmail.
@@ -28,22 +39,22 @@ class Email extends BaseConfig
     /**
      * SMTP Server Hostname
      */
-    public string $SMTPHost = '';
+    public string $SMTPHost;
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = '';
+    public string $SMTPUser;
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = '';
+    public string $SMTPPass;
 
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 25;
+    public int $SMTPPort;
 
     /**
      * SMTP Timeout (in seconds)
@@ -62,7 +73,7 @@ class Email extends BaseConfig
      *             to the server. 'ssl' means implicit SSL. Connection on port
      *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto;
 
     /**
      * Enable word-wrap
