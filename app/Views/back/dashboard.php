@@ -37,12 +37,30 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title mb-0">Empty card</h5>
+                                    <p>Helloo, <?= user()->username; ?>, <?= user()->email; ?></p>
                                 </div>
                                 <div class="card-body">
                                 </div>
+
                             </div>
                         </div>
                     </div>
+
+                    <?php if (in_groups('Admin')) : ?>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Empty card</h5>
+                                        <p>Hanya di lihat Admin</p>
+                                    </div>
+                                    <div class="card-body">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
 
                 </div>
             </main>
