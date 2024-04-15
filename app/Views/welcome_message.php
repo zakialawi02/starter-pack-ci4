@@ -261,10 +261,12 @@
                 <li class="menu-item"><a href="https://codeigniter.com/contribute" target="_blank">Contribute</a>
                 </li>
 
-
-                <li class="menu-item"><a href="/dashboard">Dashboard</a></li>
-                <li class="menu-item"><a href="/logout">Logout</a></li>
-                <li class="menu-item"><a href="/login">Login</a></li>
+                <?php if (logged_in()) : ?>
+                    <li class="menu-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="menu-item"><a href="/logout">Logout</a></li>
+                <?php else : ?>
+                    <li class="menu-item"><a href="/login">Login</a></li>
+                <?php endif ?>
             </ul>
         </div>
 
