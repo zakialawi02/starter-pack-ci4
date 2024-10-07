@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace Myth\Auth\Controllers;
 
 use CodeIgniter\Controller;
 use CodeIgniter\Session\Session;
@@ -64,6 +64,18 @@ class AuthController extends Controller
      */
     public function attemptLogin()
     {
+        // Ambil input dari request
+        $request = service('request');
+
+        // Ubah 'username' dan 'email' menjadi huruf kecil
+        $data = $request->getPost();
+        $data['login'] = strtolower($data['login']);
+
+        // Atur kembali data yang telah diubah ke dalam request
+        $request->setGlobal('post', $data);
+
+        // dd($this->request->getPost());
+
         $rules = [
             'login'    => 'required',
             'password' => 'required',
@@ -138,7 +150,6 @@ class AuthController extends Controller
      */
     public function attemptRegister()
     {
-        dd('attemptRegister');
         // Check if registration is allowed
         if (! $this->config->allowRegistration) {
             return redirect()->back()->withInput()->with('error', lang('Auth.registerDisabled'));
@@ -146,9 +157,22 @@ class AuthController extends Controller
 
         $users = model(UserModel::class);
 
+        // Ambil input dari request
+        $request = service('request');
+
+        // Ubah 'username' dan 'email' menjadi huruf kecil
+        $data = $request->getPost();
+        $data['username'] = strtolower($data['username']);
+        $data['email'] = strtolower($data['email']);
+
+        // Atur kembali data yang telah diubah ke dalam request
+        $request->setGlobal('post', $data);
+
+        // dd($this->request->getPost());
+
         // Validate basics first since some password rules rely on these fields
         $rules = config('Validation')->registrationRules ?? [
-            'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]',
+            'username' => 'required|alpha_numeric|min_length[4]|max_length[30]|is_unique[users.username]',
             'email'    => 'required|valid_email|is_unique[users.email]',
         ];
 
@@ -223,6 +247,18 @@ class AuthController extends Controller
             return redirect()->route('login')->with('error', lang('Auth.forgotDisabled'));
         }
 
+        // Ambil input dari request
+        $request = service('request');
+
+        // Ubah 'email' menjadi huruf kecil
+        $data = $request->getPost();
+        $data['email'] = strtolower($data['email']);
+
+        // Atur kembali data yang telah diubah ke dalam request
+        $request->setGlobal('post', $data);
+
+        // dd($this->request->getPost());
+
         $rules = [
             'email' => [
                 'label' => lang('Auth.emailAddress'),
@@ -286,6 +322,18 @@ class AuthController extends Controller
         }
 
         $users = model(UserModel::class);
+
+        // Ambil input dari request
+        $request = service('request');
+
+        // Ubah 'username' dan 'email' menjadi huruf kecil
+        $data = $request->getPost();
+        $data['email'] = strtolower($data['email']);
+
+        // Atur kembali data yang telah diubah ke dalam request
+        $request->setGlobal('post', $data);
+
+        // dd($this->request->getPost());
 
         // First things first - log the reset attempt.
         $users->logResetAttempt(

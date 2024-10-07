@@ -8,7 +8,9 @@
 # Ignore composer
 /composer.json
 /composer.lock
-/vendor
+/vendor/*
+!/vendor/myth/
+
 
 # Ignore .env
 /.env
