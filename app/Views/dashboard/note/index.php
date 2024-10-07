@@ -39,12 +39,12 @@
                                 <div class="card-body">
 
                                     <?php if (session()->has('success')) : ?>
-                                        <div class="alert alert-dismissible alert-success" role="alert">
+                                        <div class="alert alert-dismissible alert-success m-2" role="alert">
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button><?= session('success') ?>
                                         </div>
                                     <?php endif ?>
                                     <?php if (session()->has('error')) : ?>
-                                        <div class="alert alert-dismissible alert-error" role="alert">
+                                        <div class="alert alert-dismissible alert-error m-2" role="alert">
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <?= session('error') ?>
                                         </div>
                                     <?php endif ?>
