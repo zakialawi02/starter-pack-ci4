@@ -49,7 +49,7 @@
                                         </div>
                                     <?php endif ?>
 
-                                    <a href="/admin/notes/create" class="btn btn-primary mb-3">Create</a>
+                                    <a href="/dashboard/notes/create" class="btn btn-primary mb-3">Create</a>
 
                                     <table class="table table-bordered table-responsive table-hover">
                                         <thead>
@@ -72,9 +72,9 @@
                                                         <td><?= $note['title'] ?></td>
                                                         <td><?= $note['content'] ?></td>
                                                         <td>
-                                                            <a href="/admin/notes/view/<?= $note['id'] ?>" class="btn btn-secondary">View</a>
-                                                            <a href="/admin/notes/edit/<?= $note['id'] ?>" class="btn btn-warning">Edit</a>
-                                                            <form action="/admin/notes/delete/<?= $note['id'] ?>" method="post" class="d-inline">
+                                                            <a href="/dashboard/notes/view/<?= $note['id'] ?>" class="btn btn-secondary">View</a>
+                                                            <a href="/dashboard/notes/edit/<?= $note['id'] ?>" class="btn btn-warning">Edit</a>
+                                                            <form action="/dashboard/notes/delete/<?= $note['id'] ?>" method="post" class="d-inline">
                                                                 <?= csrf_field(); ?>
                                                                 <input type="hidden" name="_method" value="DELETE">
                                                                 <button type="submit" class="btn btn-danger">Delete</button>

@@ -40,7 +40,7 @@
 
 
 
-                                    <form action="/admin/notes/store" method="post">
+                                    <form action="/dashboard/notes/store" method="post">
                                         <?= csrf_field() ?>
 
                                         <div class="mb-3">

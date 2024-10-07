@@ -38,17 +38,29 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h5 class="card-title"><?= $note['title']; ?></h5>
-                                    <p class="card-text"><?= $note['content']; ?></p>
+                                    <form action="/dashboard/notes/update/<?= $note['id'] ?>" method="post">
+                                        <?= csrf_field() ?>
 
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label">Title</label>
+                                            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<?= old('title', $note['title']) ?>">
+                                            <?php if (session()->has('errors')) : ?>
+                                                <p class="text-danger"><?= session('errors.title') ?></p>
+                                            <?php endif ?>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="content" class="form-label">Content</label>
+                                            <textarea class="form-control" id="content" name="content" rows="3"><?= old('content', $note['content']); ?></textarea>
+                                            <?php if (session()->has('errors')) : ?>
+                                                <div class="text-danger"><?= session('errors.content') ?></div>
+                                            <?php endif ?>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="card-footer text-start">
-                                <a href="/admin/notes" class="btn btn-secondary">Back</a>
-                            </div>
-                        </div>
 
-                    </div>
+                        </div>
             </main>
 
             <footer class="footer">

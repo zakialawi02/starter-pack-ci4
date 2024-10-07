@@ -23,7 +23,7 @@ class AdminNoteController extends BaseController
         ];
         // dd($data);
 
-        return view('back/notes', $data);
+        return view('dashboard/note/index', $data);
     }
 
     public function create()
@@ -31,7 +31,7 @@ class AdminNoteController extends BaseController
         $data = [
             'title' => 'Create Note',
         ];
-        return view('back/notes_create', $data);
+        return view('dashboard/note/notes_create', $data);
     }
 
     public function store()
@@ -45,10 +45,10 @@ class AdminNoteController extends BaseController
             'title' => $this->request->getPost('title'),
             'content' => $this->request->getPost('content'),
         ];
-        dd($data);
+
         $note = $this->notes->insert($data);
         if ($note) {
-            return redirect()->to('/admin/notes')->with('success', 'Note created successfully');
+            return redirect()->to('/dashboard/notes')->with('success', 'Note created successfully');
         } else {
             return redirect()->back()->with('error', 'Note creation failed');
         }
@@ -65,7 +65,7 @@ class AdminNoteController extends BaseController
             'note' => $note
         ];
         // dd($data);
-        return view('back/notes_show', $data);
+        return view('dashboard/note/notes_show', $data);
     }
 
     public function edit($id)
@@ -79,7 +79,7 @@ class AdminNoteController extends BaseController
             'note' => $note
         ];
         // dd($data);
-        return view('back/notes_edit', $data);
+        return view('dashboard/note/notes_edit', $data);
     }
 
     public function update($id)
@@ -97,7 +97,7 @@ class AdminNoteController extends BaseController
         ];
         $note = $this->notes->update($id, $data);
         if ($note) {
-            return redirect()->to('/admin/notes')->with('success', 'Note updated successfully');
+            return redirect()->to('/dashboard/notes')->with('success', 'Note updated successfully');
         } else {
             return redirect()->back()->with('error', 'Note update failed');
         }
@@ -112,7 +112,7 @@ class AdminNoteController extends BaseController
         // dd($note);
         $this->notes->delete($note);
         if ($note) {
-            return redirect()->to('/admin/notes')->with('success', 'Note deleted successfully');
+            return redirect()->to('/dashboard/notes')->with('success', 'Note deleted successfully');
         } else {
             return redirect()->back()->with('error', 'Note deletion failed');
         }

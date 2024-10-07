@@ -9,17 +9,20 @@
                 Pages
             </li>
 
-            <li class="sidebar-item <?= (strpos(current_url(), 'dashboard') !== false) ? ' active' : '' ?>">
-                <a class="sidebar-link" href="<?= route_to('dashboard') ?>">
+            <li class="sidebar-item <?= (current_url() == base_url('/dashboard')) ? 'active' : ''; ?>">
+                <a class="sidebar-link" href="/dashboard">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
 
-            <li class="sidebar-item <?= (strpos(current_url(), 'admin/notes') !== false) ? ' active' : '' ?>">
-                <a class="sidebar-link" href="<?= route_to('admin/notes') ?>">
-                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Notes</span>
-                </a>
-            </li>
+
+            <?php if (in_groups('Admin')) : ?>
+                <li class="sidebar-item <?= (current_url() == base_url('/dashboard/notes')) ? 'active' : ''; ?>">
+                    <a class="sidebar-link" href="/dashboard/notes">
+                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Notes</span>
+                    </a>
+                </li>
+            <?php endif; ?>
 
             <li class="sidebar-header">
                 Tools & Components

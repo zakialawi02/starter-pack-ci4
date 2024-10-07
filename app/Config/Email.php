@@ -9,6 +9,7 @@ class Email extends BaseConfig
     public function __construct()
     {
         $this->fromEmail = $_ENV['FROM_MAIL'];
+        $this->fromName = $_ENV['FROM_NAME'];
         $this->protocol = $_ENV['PROTOCOL_MAIL'];
         $this->SMTPHost = $_ENV['SMTP_HOST'];
         $this->SMTPUser = $_ENV['SMTP_USER'];
@@ -18,7 +19,7 @@ class Email extends BaseConfig
     }
 
     public string $fromEmail;
-    public string $fromName   = 'CI4';
+    public string $fromName;
     public string $recipients;
 
     /**

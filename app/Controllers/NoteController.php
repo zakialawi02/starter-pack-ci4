@@ -23,7 +23,7 @@ class NoteController extends BaseController
         ];
         // dd($data);
 
-        return view('front/notes', $data);
+        return view('front/note/notes_index', $data);
     }
 
     public function show($id)
@@ -37,6 +37,6 @@ class NoteController extends BaseController
             'note' => $note
         ];
         // dd($data);
-        return view('front/notes_show', $data);
+        return view('front/note/notes_show', $data);
     }
 }

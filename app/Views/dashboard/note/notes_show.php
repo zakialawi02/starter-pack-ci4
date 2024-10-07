@@ -27,42 +27,28 @@
             <!-- HEADER NAV -->
             <?= $this->include('components/header_admin'); ?>
 
+
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">Blank Page</h1>
+                    <h2 class="h3 mb-3">Notes</h2>
 
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">Empty card</h5>
-                                    <p>Helloo, <?= user()->username; ?>, <?= user()->email; ?></p>
-                                </div>
                                 <div class="card-body">
-                                </div>
 
+                                    <h5 class="card-title"><?= $note['title']; ?></h5>
+                                    <p class="card-text"><?= $note['content']; ?></p>
+
+                                </div>
+                            </div>
+                            <div class="card-footer text-start">
+                                <a href="/dashboard/notes" class="btn btn-secondary">Back</a>
                             </div>
                         </div>
+
                     </div>
-
-                    <?php if (in_groups('Admin')) : ?>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title mb-0">Empty card</h5>
-                                        <p>Hanya di lihat Admin</p>
-                                    </div>
-                                    <div class="card-body">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    <?php endif ?>
-
-                </div>
             </main>
 
             <footer class="footer">

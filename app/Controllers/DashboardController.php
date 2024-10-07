@@ -15,6 +15,6 @@ class DashboardController extends BaseController
         ];
         // dd($data);
 
-        return view('back/dashboard', $data);
+        return view('dashboard/index', $data);
     }
 }
